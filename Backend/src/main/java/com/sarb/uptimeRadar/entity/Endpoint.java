@@ -1,6 +1,7 @@
 package com.sarb.uptimeRadar.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -11,9 +12,11 @@ public class Endpoint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String url;
+    @Column(columnDefinition = "BOOLEAN")
     private boolean isUp;
 
     @OneToMany(mappedBy = "endpoint", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Alert> alerts;
 
     public Long getId() {

@@ -19,7 +19,7 @@ public class MonitoringService {
     @Autowired
     public MonitoringService(EndpointRepository endpointRepository, AlertService alertService, AlertService alertService1, AlertService alertService2) {
         this.endpointRepository = endpointRepository;
-        this.alertService = alertService2;
+        this.alertService = alertService;
     }
 
     public void checkUptime() {
@@ -29,7 +29,7 @@ public class MonitoringService {
             if (isUp != endpoint.isUp()) {
                 endpoint.setUp(isUp);
                 endpointRepository.save(endpoint);
-                alertService.CreateAlert(endpoint, isUp);
+                alertService.createAlertIfStatusChanged(endpoint, isUp);
             }
         }
 

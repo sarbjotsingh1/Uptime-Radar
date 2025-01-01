@@ -1,5 +1,6 @@
 package com.sarb.uptimeRadar.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -15,6 +16,7 @@ public class Alert {
 
     @ManyToOne
     @JoinColumn(name = "endpoint_id")
+    @JsonIgnore
     private Endpoint endpoint;
 
     public long getId() {

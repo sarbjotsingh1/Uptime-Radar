@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 public class MonitoringScheduler {
     private final MonitoringService monitoringService;
 
-
     public MonitoringScheduler(MonitoringService monitoringService) {
         this.monitoringService = monitoringService;
     }
